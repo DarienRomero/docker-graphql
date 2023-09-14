@@ -38,15 +38,15 @@ jobs:
         echo new version $NEW_VERSION
         echo "Fin del login"
         
-    # - name: Build Docker Image
-    #   env:
-    #     NEW_VERSION: ${{steps.version.outputs.version}}
-    #   run: |
-    #     docker build -t darienromero/docker-graphql:$NEW_VERSION .
-    #     docker build -t darienromero/docker-graphql:latest .
-    # - name: Push Docker Image
-    #   env:
-    #     NEW_VERSION: ${{steps.version.outputs.version}}
-    #   run: |
-    #     docker push darienromero/docker-graphql:$NEW_VERSION
-    #     docker push darienromero/docker-graphql:latest
+    - name: Build Docker Image
+      env:
+        NEW_VERSION: ${{steps.version.outputs.version}}
+      run: |
+        docker build -t darienromero/docker-graphql:$NEW_VERSION .
+        docker build -t darienromero/docker-graphql:latest .
+    - name: Push Docker Image
+      env:
+        NEW_VERSION: ${{steps.version.outputs.version}}
+      run: |
+        docker push darienromero/docker-graphql:$NEW_VERSION
+        docker push darienromero/docker-graphql:latest
